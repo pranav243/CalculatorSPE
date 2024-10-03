@@ -3,13 +3,12 @@
   hosts: all
 
   tasks:
-#    - name: Start Docker Service
-#      service:
-#        name: docker
-#        state: started
 
     - name: Pull Image
       shell: docker pull pranav243/calculator:latest
+
+    - name: Delete existing container
+      shell: docker rm Calculator
 
     - name: Run the container
       shell: docker create -it --name Calculator pranav243/calculator
